@@ -1,0 +1,12 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "AzureWebJobsStorage": "",
+    "FUNCTION_APP_TOKEN_URL": "http://localhost:7071/api/token",
+    "FUNCTION_APP_KEY": "",
+    "JWT_SECRET": "<same-secret-as-function-app>",
+    "JWT_ISSUER": "auth-function-app",
+    "JWT_AUDIENCE": "static-web-app"
+  }
+}

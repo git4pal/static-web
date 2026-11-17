@@ -1,0 +1,17 @@
+{
+  "platform": {
+    "apiRuntime": "node:20"
+  },
+  "routes": [
+    { "route": "/login", "rewrite": "/login.html" },
+    { "route": "/index.html", "headers": { "Cache-Control": "no-store" } },
+    { "route": "/", "headers": { "Cache-Control": "no-store" } }
+  ],
+  "globalHeaders": {
+    "Content-Security-Policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' https://images.unsplash.com; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "Referrer-Policy": "same-origin",
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+  }
+}

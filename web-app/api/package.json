@@ -1,0 +1,17 @@
+{
+  "name": "web-app-api",
+  "version": "1.0.0",
+  "description": "SWA managed API: exchanges the password for a JWT via the C# function app, validates it and stores it in a secure cookie.",
+  "private": true,
+  "main": "src/functions/*.js",
+  "scripts": {
+    "start": "func start"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@azure/functions": "^4.17.1",
+    "jsonwebtoken": "^9.0.3"
+  }
+}

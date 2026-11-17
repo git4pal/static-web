@@ -1,0 +1,13 @@
+{
+  "$schema": "https://aka.ms/azure/static-web-apps-cli/schema",
+  "configurations": {
+    "web-app": {
+      "appLocation": "src",
+      "outputLocation": ".",
+      "apiLocation": "api",
+      "apiLanguage": "node",
+      "apiVersion": "20",
+      "apiPort": 7072
+    }
+  }
+}
