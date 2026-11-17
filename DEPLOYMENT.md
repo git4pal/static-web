@@ -70,7 +70,7 @@ az storage account create \
 az functionapp create \
   --name $FUNC_APP --resource-group $RG \
   --storage-account $STORAGE \
-  --flex-consumption-location $LOCATION \
+  --flexconsumption-location $LOCATION \
   --runtime dotnet-isolated --runtime-version 10 \
   --https-only true
 ```
@@ -109,12 +109,16 @@ The output lists the function URL, e.g. `https://<func-app>.azurewebsites.net/ap
 ### 3.5 Get the function URL and key
 
 ```bash
-FUNC_HOST=$(az functionapp show -n $FUNC_APP -g $RG --query defaultHostName -o tsv)
+FUNC_HOST=$(az functionapp show -n "$FUNC_APP" -g "$RG" \
+  --query "defaultHostName || properties.defaultHostName" -o tsv)
 FUNCTION_APP_TOKEN_URL="https://$FUNC_HOST/api/token"
 FUNCTION_APP_KEY=$(az functionapp function keys list \
   -n $FUNC_APP -g $RG --function-name Token --query default -o tsv)
 echo $FUNCTION_APP_TOKEN_URL
 ```
+
+The hostname query handles both top-level and nested `properties` response formats
+returned by different Azure CLI versions.
 
 ### 3.6 Smoke test
 
