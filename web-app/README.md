@@ -23,6 +23,10 @@ Browser ◀── Set-Cookie: auth_token ───────┘
    (missing, expired or tampered) always ends on the login page.
 4. **Logout** calls `/api/logout`, which clears the cookie.
 
+The landing page is the RFI Companion. The login page uses its dark palette,
+orange accent and rounded controls. The original retail demo is preserved as
+`src/index-temp.html`.
+
 > Why a managed API? JavaScript in the browser cannot create `HttpOnly` cookies, and validating an
 > HS256 token in the browser would expose the signing secret. The API keeps both on the server.
 >

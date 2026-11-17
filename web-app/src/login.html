@@ -1,82 +1,151 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign in | Nexus Retail</title>
+    <title>Sign in | RFI Companion</title>
     <style>
+        :root {
+            --bg: #0c0c0d;
+            --panel: #161618;
+            --panel2: #202023;
+            --ink: #f5f5f2;
+            --mute: #a0a0a6;
+            --line: #2e2e33;
+            --acc: #ff5a1f;
+            --acc2: #35d0c8;
+        }
+        * {
+            box-sizing: border-box;
+        }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             min-height: 100vh;
+            min-height: 100dvh;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #2c3e50, #3498db);
-            color: #333;
+            flex-direction: column;
+            background: var(--bg);
+            color: var(--ink);
+            font: 15px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        .top {
+            padding: 16px 28px;
+            border-bottom: 1px solid var(--line);
+        }
+        .brand {
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+        }
+        .brand small {
+            display: block;
+            color: var(--mute);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: .02em;
+            text-transform: none;
+        }
+        main {
+            flex: 1;
+            display: grid;
+            place-items: center;
+            padding: 36px 20px;
         }
         .card {
-            background: #fff;
-            padding: 2.5rem;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             width: 100%;
-            max-width: 360px;
+            max-width: 440px;
+            padding: clamp(24px, 6vw, 40px);
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-top: 4px solid var(--acc);
+            border-radius: 16px;
         }
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #2c3e50;
-            text-align: center;
-            margin-bottom: 1.5rem;
+        h1 {
+            margin: 0 0 12px;
+            font-size: clamp(32px, 8vw, 44px);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -.02em;
+            text-transform: uppercase;
+        }
+        h1 span {
+            color: var(--acc);
+        }
+        .intro {
+            margin: 0 0 28px;
+            color: var(--mute);
         }
         label {
             display: block;
-            font-weight: 500;
+            font-size: 13px;
+            font-weight: 600;
             margin-bottom: 0.5rem;
         }
         input[type="password"] {
             width: 100%;
-            box-sizing: border-box;
-            padding: 10px 12px;
-            border: 1px solid #bdc3c7;
-            border-radius: 4px;
-            font-size: 1rem;
+            padding: 12px 14px;
+            background: var(--panel2);
+            color: var(--ink);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            font: inherit;
             margin-bottom: 1rem;
+        }
+        :focus-visible {
+            outline: 3px solid var(--acc2);
+            outline-offset: 3px;
         }
         button {
             width: 100%;
             padding: 12px;
-            background-color: #3498db;
-            color: #fff;
+            background: var(--acc);
+            color: #111;
             border: none;
-            border-radius: 4px;
-            font-size: 1rem;
-            font-weight: bold;
+            border-radius: 999px;
+            font: inherit;
+            font-weight: 700;
             cursor: pointer;
         }
+        button:hover:not(:disabled) {
+            background: var(--ink);
+        }
         button:disabled {
-            background-color: #95a5a6;
-            cursor: not-allowed;
+            background: var(--panel2);
+            color: var(--mute);
+            cursor: wait;
         }
         .error {
-            color: #e74c3c;
-            min-height: 1.2em;
+            color: #ff9070;
+            min-height: 1.5em;
             margin-top: 1rem;
-            text-align: center;
+            font-size: 13px;
+        }
+        .foot {
+            padding: 18px 28px;
+            border-top: 1px solid var(--line);
+            color: var(--mute);
+            font-size: 12px;
         }
     </style>
 </head>
 <body>
-    <main class="card">
-        <div class="logo">NEXUS</div>
-        <form id="login-form" novalidate>
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" autocomplete="current-password" required autofocus>
-            <button type="submit" id="login-btn">Sign in</button>
-            <div class="error" id="error" role="alert" aria-live="polite"></div>
-        </form>
+    <header class="top">
+        <div class="brand">RFI Companion<small>Professional Services RFI &middot; supplemental view</small></div>
+    </header>
+    <main>
+        <section class="card" aria-labelledby="login-title">
+            <h1 id="login-title">Welcome <span>back.</span></h1>
+            <p class="intro">Enter your password to explore our capabilities, coverage and results.</p>
+            <form id="login-form" novalidate>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" autocomplete="current-password" required autofocus>
+                <button type="submit" id="login-btn">Sign in</button>
+                <div class="error" id="error" role="alert" aria-live="polite"></div>
+            </form>
+        </section>
     </main>
+    <footer class="foot">RFI Companion &middot; Capabilities, coverage and results, in one place.</footer>
     <script src="/js/login.js"></script>
 </body>
 </html>
